@@ -11,6 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HomeController {
 
+    /**
+     * Rest Controller
+     *
+     */
+
     @GetMapping(value = "/get", produces = MediaType.APPLICATION_JSON_VALUE)
     public Greetings welcome(){
         return new Greetings("Hello", "Mr Stranger", "Welcome To Broken Arrow");
