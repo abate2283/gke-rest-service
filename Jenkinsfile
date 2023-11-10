@@ -14,7 +14,18 @@ pipeline {
         stage('Integration Test'){
               steps {
                   echo "Integration Test"
-          }
+                }
+            }
+       }
+       post {
+            always {
+                echo 'Im awesome, I ran always'
+       }
+            success {
+                 echo 'I run when you are successful'
+           }
+            failure {
+                  echo 'I run when you are unsuccessful'
        }
     }
 }
