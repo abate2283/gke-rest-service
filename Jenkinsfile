@@ -3,15 +3,16 @@ pipeline {
 //     agent { docker {image 'maven:3.9.5'}}
 //     agent { docker {image 'node:21.1'}}
         environment {
-                dockerHome = tool 'abateDocker'
-                mavenHome = tool 'abateMaven'
-                PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
+//                 dockerHome = tool 'abateDocker'
+                mavenHome = tool 'gcpMaven'
+//                 PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
+                PATH = $mavenHome/bin:$PATH"
         }
     stages {
         stage('Build'){
             steps {
                 sh "mvn --version"
-                sh "docker version"
+//                 sh "docker version"
                 echo "Build"
                 echo "PATH - $PATH"
                 echo "BUILD_NUMBER - $env.BUILD_NUMBER"
