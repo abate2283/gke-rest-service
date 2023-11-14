@@ -10,7 +10,7 @@ pipeline {
 
 
     }
-    stages {
+
             stage('Test'){
                 steps {
 
@@ -21,8 +21,8 @@ pipeline {
             }
 
 
-        }
-    stages {
+
+
             stage('Integration Test'){
                 steps {
 
@@ -33,7 +33,7 @@ pipeline {
             }
 
 
-        }
+
 
 }
 
