@@ -6,7 +6,6 @@ pipeline {
                 dockerHome = tool 'gcpDocker'
                 mavenHome = tool 'gcpMaven'
                 PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
-
         }
     stages {
         stage('Build'){
@@ -29,24 +28,26 @@ pipeline {
         }
         stage('Test'){
              steps {
+                echo "Test"
                 sh "mvn test"
             }
        }
         stage('Integration Test'){
               steps {
+                  echo "Integration Test"
                   sh "mvn failsafe:integration-test failsafe:verify"
                 }
             }
-
+       }
        post {
             always {
                 echo 'I am awesome, I run always'
-            }
+       }
             success {
                  echo 'I run when you are successful'
-                    }
+           }
             failure {
                   echo 'I run when you are unsuccessful'
-            }
-
+       }
+    }
 }
