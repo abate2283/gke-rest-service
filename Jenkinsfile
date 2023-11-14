@@ -56,7 +56,7 @@ pipeline {
                 script {
                     docker.withRegistry('', 'alfredbate'){
                     dockerImage.push();
-                    dockerImage.push('latest'):
+                    dockerImage.push('latest');
                     }
                 }
 
