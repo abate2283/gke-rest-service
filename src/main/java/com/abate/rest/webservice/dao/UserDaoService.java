@@ -38,15 +38,23 @@ public class UserDaoService {
     }
 
     public Users findOne(int id){
-        Predicate<? super Users> predicate = user -> Objects.equals(user.getId(), id); ;
+        Predicate<? super Users> predicate = user -> Objects.equals(user.getId(), id);
         return usersList.stream().filter(predicate).findFirst().get();
     }
-
-
     public Users saveUser(Users users){
         users.setUuid(UUID.randomUUID().toString());
         usersList.add(users);
         return users;
+    }
+
+    public void deleteById(int id){
+        Predicate<? super Users> predicate = users -> Objects.equals(users.getId(), id);
+        usersList.removeIf(predicate);
+    }
+
+    public void aDeleteById(int id){
+        Predicate<Users> predicate = users -> Objects.equals(users.getId(), id);
+        usersList.removeIf(predicate);
     }
 
 

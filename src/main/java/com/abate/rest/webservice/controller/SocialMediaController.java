@@ -1,8 +1,8 @@
 package com.abate.rest.webservice.controller;
 
 import com.abate.rest.webservice.dao.UserDaoService;
-import com.abate.rest.webservice.exception.UserNotFoundException;
 import com.abate.rest.webservice.model.Users;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
+
 
 
 @RestController
@@ -35,12 +35,24 @@ public class SocialMediaController {
     }
 
     @PostMapping(path = "/users")
-    public ResponseEntity<Users> createUser(@RequestBody Users users){
+    public ResponseEntity<Users> createUser(@Valid @RequestBody Users users){
         Users users1 = service.saveUser(users);
         return new ResponseEntity<>(users1, HttpStatus.CREATED);
     }
+
+    @DeleteMapping(path = "/delete-users/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public void deleteUser(@PathVariable int id){
+        service.deleteById(id);
+    }
+
     @PutMapping(path = "/update/{value}")
     public Users updateUser(@RequestBody Users users, @PathVariable String value){
         return null;
+    }
+
+    @DeleteMapping(path = "/remove/{id}")
+    public void deleteAUser(@PathVariable int id){
+        service.aDeleteById(id);
+
     }
 }

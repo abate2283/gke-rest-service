@@ -1,0 +1,9 @@
+spring:
+  security:
+    user:
+      name: mySecurity
+
+      password: 45e6a8da-1129-44b0-9302-2ad4a481985
+
+#spring.security.user.name = mySecurity
+#spring.security.user.password = 45e6a8da-1129-44b0-9302-2ad4a481985
